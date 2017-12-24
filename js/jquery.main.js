@@ -1,4 +1,3 @@
-/* script by ProVerstka */
 $(document).ready(function(){
 	/* инициализация функций */
 	nextBlock();
@@ -29,7 +28,7 @@ $(document).ready(function(){
 		if(!$('#wrapper').attr("class").length){
 			$('#wrapper').attr("class", arrColorTypeClassFull.join(' '));
 		}
-	}
+	};
 
 	$('.content_block:not(.block-signup) input').click(function(){
 		$(this).closest('.content_block').find('.btn_next').addClass('active');
@@ -51,9 +50,8 @@ $(document).ready(function(){
 	};
 
 	function counterAnimate(val) {
-		parseVal = parseFloat(val);
-		console.log(val);
-		var count = 0;
+		var parseVal = parseFloat(val),
+			count = 0;
 		var _t = setInterval(function() {
 			if(count >= parseVal){
 				$('.info_block .info_count span').html(val);
@@ -81,138 +79,132 @@ $(document).ready(function(){
 	};
 
 
+	function initSendForm() {
+		$('.main_form').each(function() {
+			var form = $(this),
+				input = form.find('input');
 
-
-function initSendForm() {
-	$('.main_form').each(function() {
-		var form = $(this),
-			input = form.find('input');
-
-		form.find('.name').blur(function() {
-			var val = $(this).val();
-			if ((/^[a-zA-Z0-9а-яА-Я\s-]{1,40}$/ig).test(val)) {
-				$(this).closest('.input_wrapper').removeClass('incorrect');
-				$(this).closest('.input_wrapper').addClass('correct');
-			} else {
-				$(this).closest('.input_wrapper').addClass('incorrect');
-				$(this).closest('.input_wrapper').removeClass('correct');
-			}
-		});
-		form.on('keyup keydown', '.name', function() {
-			var val = $(this).val();
-			if ((/^[a-zA-Z0-9а-яА-Я\s-]{1,40}$/ig).test(val)) {
-				$(this).closest('.input_wrapper').removeClass('incorrect');
-				$(this).closest('.input_wrapper').addClass('correct');
-			} else {
-				$(this).closest('.input_wrapper').addClass('incorrect');
-				$(this).closest('.input_wrapper').removeClass('correct');
-			}
-		});
-		form.find('.password').blur(function() {
-			var val = $(this).val();
-			if ((/^[a-zA-Z0-9а-яА-Я\s-]{1,40}$/ig).test(val)) {
-				$(this).closest('.input_wrapper').removeClass('incorrect');
-				$(this).closest('.input_wrapper').addClass('correct');
-			} else {
-				$(this).closest('.input_wrapper').addClass('incorrect');
-				$(this).closest('.input_wrapper').removeClass('correct');
-			}
-		});
-		form.on('keyup keydown', '.password', function() {
-			var val = $(this).val();
-			if ((/^[a-zA-Z0-9а-яА-Я\s-]{1,40}$/ig).test(val)) {
-				$(this).closest('.input_wrapper').removeClass('incorrect');
-				$(this).closest('.input_wrapper').addClass('correct');
-			} else {
-				$(this).closest('.input_wrapper').addClass('incorrect');
-				$(this).closest('.input_wrapper').removeClass('correct');
-			}
-		});
-		form.find('.email').blur(function() {
-			var val = $(this).val();
-			if((/^[-\._a-z0-9]+@(?:[a-z0-9][-a-z0-9]+\.)+[a-z]{2,6}$/ig).test(val) && val.length<=30){ 
-				$(this).closest('.input_wrapper').removeClass('incorrect');
-				$(this).closest('.input_wrapper').addClass('correct');
-			} else {
-				$(this).closest('.input_wrapper').addClass('incorrect');
-				$(this).closest('.input_wrapper').removeClass('correct');
-			}
-		});
-		form.on('keyup keydown', '.email', function() {
-			var val = $(this).val();
-			if((/^[-\._a-z0-9]+@(?:[a-z0-9][-a-z0-9]+\.)+[a-z]{2,6}$/ig).test(val) && val.length<=30){
-				$(this).closest('.input_wrapper').removeClass('incorrect');
-				$(this).closest('.input_wrapper').addClass('correct');
-			} else {
-				$(this).closest('.input_wrapper').addClass('incorrect');
-				$(this).closest('.input_wrapper').removeClass('correct');
-			}
-		});
-
-
-		//Проверяем чтобы все радиобатоны были выбраны в форме регистрации
-		var inputRadioArr = [];
-		$('.block-signup input[type="radio"]').each(function(){
-			inputRadioArr[inputRadioArr.length] = $(this).attr("name");
-		});
-		var arrUniqueNameRadio = unique(inputRadioArr);
-
-		form.on('click', function() {
-			for(var i = 0; i < arrUniqueNameRadio.length; i++){
-				if (!$("input[name='"+arrUniqueNameRadio[i]+"']:checked").val()) {
-					$("input[name='"+arrUniqueNameRadio[i]+"']").closest('.input_wrapper').addClass('incorrect');
-				}else{
-					$("input[name='"+arrUniqueNameRadio[i]+"']").closest('.input_wrapper').removeClass('incorrect');
+			form.find('.name').blur(function() {
+				var val = $(this).val();
+				if ((/^[a-zA-Z0-9а-яА-Я\s-]{1,40}$/ig).test(val)) {
+					$(this).closest('.input_wrapper').removeClass('incorrect');
+					$(this).closest('.input_wrapper').addClass('correct');
+				} else {
+					$(this).closest('.input_wrapper').addClass('incorrect');
+					$(this).closest('.input_wrapper').removeClass('correct');
 				}
-			}
-		});
-		$('.signup_holder .input_wrapper.list_variants').click(function(){
-			input.trigger('blur');
-		})
+			});
+			form.on('keyup keydown', '.name', function() {
+				var val = $(this).val();
+				if ((/^[a-zA-Z0-9а-яА-Я\s-]{1,40}$/ig).test(val)) {
+					$(this).closest('.input_wrapper').removeClass('incorrect');
+					$(this).closest('.input_wrapper').addClass('correct');
+				} else {
+					$(this).closest('.input_wrapper').addClass('incorrect');
+					$(this).closest('.input_wrapper').removeClass('correct');
+				}
+			});
+			form.find('.password').blur(function() {
+				var val = $(this).val();
+				if ((/^[a-zA-Z0-9а-яА-Я\s-]{1,40}$/ig).test(val)) {
+					$(this).closest('.input_wrapper').removeClass('incorrect');
+					$(this).closest('.input_wrapper').addClass('correct');
+				} else {
+					$(this).closest('.input_wrapper').addClass('incorrect');
+					$(this).closest('.input_wrapper').removeClass('correct');
+				}
+			});
+			form.on('keyup keydown', '.password', function() {
+				var val = $(this).val();
+				if ((/^[a-zA-Z0-9а-яА-Я\s-]{1,40}$/ig).test(val)) {
+					$(this).closest('.input_wrapper').removeClass('incorrect');
+					$(this).closest('.input_wrapper').addClass('correct');
+				} else {
+					$(this).closest('.input_wrapper').addClass('incorrect');
+					$(this).closest('.input_wrapper').removeClass('correct');
+				}
+			});
+			form.find('.email').blur(function() {
+				var val = $(this).val();
+				if((/^[-\._a-z0-9]+@(?:[a-z0-9][-a-z0-9]+\.)+[a-z]{2,6}$/ig).test(val) && val.length<=30){ 
+					$(this).closest('.input_wrapper').removeClass('incorrect');
+					$(this).closest('.input_wrapper').addClass('correct');
+				} else {
+					$(this).closest('.input_wrapper').addClass('incorrect');
+					$(this).closest('.input_wrapper').removeClass('correct');
+				}
+			});
+			form.on('keyup keydown', '.email', function() {
+				var val = $(this).val();
+				if((/^[-\._a-z0-9]+@(?:[a-z0-9][-a-z0-9]+\.)+[a-z]{2,6}$/ig).test(val) && val.length<=30){
+					$(this).closest('.input_wrapper').removeClass('incorrect');
+					$(this).closest('.input_wrapper').addClass('correct');
+				} else {
+					$(this).closest('.input_wrapper').addClass('incorrect');
+					$(this).closest('.input_wrapper').removeClass('correct');
+				}
+			});
 
-		form.on('click keyup keydown', function() {
-			if (!form.find('.incorrect').length) {
-				form.addClass('correct');
-			}else{
-				form.removeClass('correct');
-			}
-		});
 
-		form.submit(function(e) {
-			input.trigger('blur');
-			if (form.find('.incorrect').length) {
-				return false;
-			} else {
-				_url = 'path/to/phpfile';
-				values = $(this).serialize();
-				$.ajax({
-					url: _url,
-					type: 'post',
-					data: values,
-					success: function() {
-						alert('success');
-					},
-					error: function() {
-						alert('Ошибка сервера');
+			//Проверяем чтобы все радиобатоны были выбраны в форме регистрации
+			var inputRadioArr = [];
+			$('.block-signup input[type="radio"]').each(function(){
+				inputRadioArr[inputRadioArr.length] = $(this).attr("name");
+			});
+			var arrUniqueNameRadio = unique(inputRadioArr);
+
+			form.on('click', function() {
+				for(var i = 0; i < arrUniqueNameRadio.length; i++){
+					if (!$("input[name='"+arrUniqueNameRadio[i]+"']:checked").val()) {
+						$("input[name='"+arrUniqueNameRadio[i]+"']").closest('.input_wrapper').addClass('incorrect');
+					}else{
+						$("input[name='"+arrUniqueNameRadio[i]+"']").closest('.input_wrapper').removeClass('incorrect');
 					}
-				});
-				return false;
-			}
+				}
+			});
+			$('.signup_holder .input_wrapper.list_variants').click(function(){
+				input.trigger('blur');
+			})
+
+			form.on('click keyup keydown', function() {
+				if (!form.find('.incorrect').length) {
+					form.addClass('correct');
+				}else{
+					form.removeClass('correct');
+				}
+			});
+
+			form.submit(function(e) {
+				input.trigger('blur');
+				if (form.find('.incorrect').length) {
+					return false;
+				} else {
+					_url = 'path/to/phpfile';
+					values = $(this).serialize();
+					$.ajax({
+						url: _url,
+						type: 'post',
+						data: values,
+						success: function() {
+							alert('success');
+						},
+						error: function() {
+							alert('Server error');
+						}
+					});
+					return false;
+				}
+			});
 		});
-	});
-};
+	};
 
-function unique(arr) {
-	var obj = {};
-	for (var i = 0; i < arr.length; i++) {
-		var str = arr[i];
-		obj[str] = true; // запомнить строку в виде свойства объекта
-	}
-
-	return Object.keys(obj);
-}
+	function unique(arr) {
+		var obj = {};
+		for (var i = 0; i < arr.length; i++) {
+			var str = arr[i];
+			obj[str] = true; // запомнить строку в виде свойства объекта
+		}
+		return Object.keys(obj);
+	};
 
 });
-
-/* подключение плагинов */
-
