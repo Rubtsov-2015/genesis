@@ -89,18 +89,33 @@ textarea:focus::-moz-placeholder          	{opacity: 0;}
 textarea:focus:-moz-placeholder           	{opacity: 0;}
 textarea:focus:-ms-input-placeholder      	{opacity: 0;}
 
-.color_type-0 main,
-.color_type-0 main:before{
-	border-color: #fc5095;
+
+.color_type-3 main,
+.color_type-3 main:before{
+	border-color: #1da7c0;
 }
-.color_type-0 main:before,
-.color_type-0 .content_block  strong{
-	color: #fc5095;
+.color_type-3 main:before,
+.color_type-3 .content_block  strong{
+	color: #1da7c0;
 }
-.color_type-0 .btn_holder a,
-.color_type-0 .radio_holder input:checked+label,
-.color_type-0 .info_block:before{
-	background: #fc5095;
+.color_type-3 .btn_holder a,
+.color_type-3 .radio_holder input:checked+label,
+.color_type-3 .info_block:before{
+	background: #1da7c0;
+}
+
+.color_type-2 main,
+.color_type-2 main:before{
+	border-color: #fcc150;
+}
+.color_type-2 main:before,
+.color_type-2 .content_block  strong{
+	color: #fcc150;
+}
+.color_type-2 .btn_holder a,
+.color_type-2 .radio_holder input:checked+label,
+.color_type-2 .info_block:before{
+	background: #fcc150;
 }
 
 .color_type-1 main,
@@ -117,19 +132,24 @@ textarea:focus:-ms-input-placeholder      	{opacity: 0;}
 	background: #fc8950;
 }
 
-.color_type-2 main,
-.color_type-2 main:before{
-	border-color: #fcc150;
+.color_type-0 main,
+.color_type-0 main:before{
+	border-color: #fc5095;
 }
-.color_type-2 main:before,
-.color_type-2 .content_block  strong{
-	color: #fcc150;
+.color_type-0 main:before,
+.color_type-0 .content_block  strong{
+	color: #fc5095;
 }
-.color_type-2 .btn_holder a,
-.color_type-2 .radio_holder input:checked+label,
-.color_type-2 .info_block:before{
-	background: #fcc150;
+.color_type-0 .btn_holder a,
+.color_type-0 .radio_holder input:checked+label,
+.color_type-0 .info_block:before{
+	background: #fc5095;
 }
+
+
+
+
+
 
 #wrapper{
 	overflow: auto;
@@ -156,17 +176,33 @@ textarea:focus:-ms-input-placeholder      	{opacity: 0;}
 	font-weight: 900;
 	height: 100%;
 	width: 100%;
-	display: -webkit-flex;
-	display: -moz-flex;
-	display: -ms-flex;
-	display: -o-flex;
-	display: flex;
+	padding: 0 20px;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+			box-sizing: border-box;
 	flex-direction: column;
 	align-content: center;
 	-webkit-justify-content: center;
     -ms-flex-pack: center;
     justify-content: center;
+    display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
 	z-index: 1;
+	opacity: 0;
+	visibility: hidden;
+	
+}
+.info_block.active{
+	visibility: visible;
+	opacity: 1;
+	-webkit-transition: all 0.4s ease-in-out;
+	   -moz-transition: all 0.4s ease-in-out;
+		-ms-transition: all 0.4s ease-in-out;
+		 -o-transition: all 0.4s ease-in-out;
+			transition: all 0.4s ease-in-out;
 }
 .info_block:before{
 	content: '';
@@ -221,7 +257,7 @@ nav li a{
 	color: #3b3b3b;
 }
 main{
-	width: 845px;
+	width: 44%;
 	height: 100%;
 	background: #f6f5f5;
 	border-top: 220px solid #000;
@@ -255,12 +291,17 @@ main:before{
 	border-radius: 50%;
 	font-size: 30px;
 	text-align: center;
+	-webkit-transition: all 0.2s ease-in-out;
+	   -moz-transition: all 0.2s ease-in-out;
+		-ms-transition: all 0.2s ease-in-out;
+		 -o-transition: all 0.2s ease-in-out;
+			transition: all 0.2s ease-in-out;
 	-webkit-box-sizing: border-box;
 	   -moz-box-sizing: border-box;
 			box-sizing: border-box;
 }
 main.half_width{
-	width: 480px;
+	width: 25%;
 	background: #fff;
 }
 .content_block{
@@ -311,7 +352,8 @@ main.half_width{
 	max-width: 384px;
 	text-align: center;
 }
-.btn_next.active{
+.btn_next.active,
+.start_btn{
 	display: block;
 }
 .feedback_question{
@@ -385,7 +427,17 @@ main.half_width{
 	line-height: 0;
 
 }
-.signup_holder .input_wrapper>span{
+.signup_holder .input_wrapper.incorrect .radio_holder label,
+.signup_holder .input_wrapper.incorrect .input_holder label{
+	border-color: #ff0000;
+}
+.signup_holder .input_wrapper.incorrect .input_holder label{
+	display: block;
+}
+.signup_holder .input_wrapper.incorrect .input_holder input:focus+label{
+	display: none;
+}
+.signup_holder .input_wrapper>label{
 	display: block;
 	margin: 0 0 2px;
 	color: #3b3b3b;
@@ -416,7 +468,8 @@ main.half_width{
 	right: auto;
 	line-height: 30px;
 }
-.signup_holder .input_holder input{
+.signup_holder .input_holder input,
+.signup_holder .input_wrapper .input_holder label{
 	display: block;
 	width: 100%;
 	-webkit-box-sizing: border-box;
@@ -427,8 +480,80 @@ main.half_width{
 	line-height: 20px;
 	font-weight: 300;
 	padding: 25px 20px;
-	border-radius: 5px;
+	border-radius: 10px;
 }
 .signup_holder .input_holder{
 	padding: 0 15px;
+	position: relative;
+}
+.signup_holder .input_wrapper.terms_of_use{
+	margin: 0 -15px 20px;
+}
+.signup_holder .input_wrapper.terms_of_use .input_holder{
+	float: left;
+	width: 13px;
+	height: 13px;
+	margin: 0 0px 0 0;
+	background: url(../images/checkbox.png) center no-repeat;
+	-webkit-background-size: contain;
+	background-size: contain;
+}
+.signup_holder .input_wrapper.terms_of_use .input_holder input{
+	font-size: 0;
+	line-height: 0;
+	padding: 0;
+	width: 0;
+}
+.signup_holder .input_wrapper.terms_of_use label{
+	overflow: hidden;
+	font-size: 13px;
+	line-height: 15px;
+	padding-left: 0;
+	padding-right: 40px;
+}
+.signup_holder .submit_holder input[type="submit"]{
+	font-size: 26px;
+	line-height: 28px;
+	color: #aaa9a9;
+	text-transform: uppercase;
+	border: 1px solid #1da7c0;
+	display: inline-block;
+	vertical-align: top;
+	width: auto;
+	border-radius: 20px;
+	cursor: pointer;
+	background: #fff;
+	font-weight: 700;
+	padding: 25px 40px;
+}
+.main_form .signup_holder .submit_holder{
+	position: relative;
+}
+.main_form .signup_holder .submit_holder:before{
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 100;
+}
+.main_form.correct .signup_holder .submit_holder:before{
+	display: none;
+}
+.main_form.correct .signup_holder .submit_holder input[type="submit"]{
+	background: #1da7c0;
+	color: #fff;
+}
+.signup_holder .input_wrapper .input_holder label{
+	position: absolute;
+	left: 15px;
+	right: 15px;
+	top: 0;
+	bottom: 0;
+	width: auto;
+	display: none;
+	color: #ff0000;
+	z-index: 10;
+	background: #fff;
 }
