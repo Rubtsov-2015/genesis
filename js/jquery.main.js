@@ -51,9 +51,11 @@ $(document).ready(function(){
 	};
 
 	function counterAnimate(val) {
+		parseVal = parseFloat(val);
+		console.log(val);
 		var count = 0;
 		var _t = setInterval(function() {
-			if(count >= val){
+			if(count >= parseVal){
 				$('.info_block .info_count span').html(val);
 				clearInterval(_t);
 			}else{
@@ -202,7 +204,6 @@ function initSendForm() {
 
 function unique(arr) {
 	var obj = {};
-	console.log('unique')
 	for (var i = 0; i < arr.length; i++) {
 		var str = arr[i];
 		obj[str] = true; // запомнить строку в виде свойства объекта
